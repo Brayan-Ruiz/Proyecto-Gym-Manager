@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{General/fragmentos :: head}"/>
+    <body>
+        <header th:replace="~{General/fragmentos :: header}"/>
+
+        <!-- Hero principal -->
+        <section id="inicio" class="hero-marino py-5">
+            <div class="container py-5">
+                <div class="row align-items-center">
+                    <div class="col-md-7">
+                        <h1 class="display-5 fw-bold">Bienvenido a Gym Manager</h1>
+                        <p class="lead">La plataforma que centraliza la administración de tu gimnasio: miembros, instructores, inventario y rutinas, todo en un solo lugar.</p>
+                        <a class="btn btn-jade btn-lg" th:href="@{/#contacto}"><i class="fas fa-paper-plane"></i> Contáctenos</a>
+                    </div>
+                    <div class="col-md-5 text-center">
+                        <i class="fas fa-dumbbell display-1 text-jade"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios -->
+        <section id="servicios" class="container py-5">
+            <h2 class="text-center mb-5">Nuestros Servicios</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card card-servicio p-3 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-user-tie icon-jade fa-2x mb-3"></i>
+                            <h5 class="card-title">Instructores Certificados</h5>
+                            <p class="card-text">Rutinas personalizadas diseñadas y asignadas por profesionales del entrenamiento físico.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-servicio p-3 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-boxes-stacked icon-jade fa-2x mb-3"></i>
+                            <h5 class="card-title">Equipamiento Actualizado</h5>
+                            <p class="card-text">Control constante del inventario de máquinas e indumentaria del centro.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-servicio p-3 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-clipboard-list icon-jade fa-2x mb-3"></i>
+                            <h5 class="card-title">Membresías Digitales</h5>
+                            <p class="card-text">Consulta tu estado de pago y accede a tus rutinas desde tu perfil en cualquier momento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Horarios -->
+        <section id="horarios" class="bg-gris-claro py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Horarios de Atención</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <table class="table table-bordered bg-crema">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Día</th>
+                                    <th>Horario</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Lunes a Viernes</td>
+                                    <td>5:00 a.m. - 9:00 p.m.</td>
+                                </tr>
+                                <tr>
+                                    <td>Sábados</td>
+                                    <td>7:00 a.m. - 4:00 p.m.</td>
+                                </tr>
+                                <tr>
+                                    <td>Domingos y feriados</td>
+                                    <td>8:00 a.m. - 12:00 m.d.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contacto" class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card card-servicio">
+                        <div class="card-header bg-jade text-white">
+                            <h4 class="mb-0"><i class="fas fa-envelope"></i> Contáctenos</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="formContacto" class="was-validated" onsubmit="return enviarContacto(event)">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Correo</label>
+                                    <input type="email" class="form-control" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Mensaje</label>
+                                    <textarea class="form-control" required="true"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-jade">Enviar</button>
+                                <div id="mensajeExito" class="mt-3 text-jade fw-bold d-none">
+                                    Gracias por su mensaje, le responderemos a la brevedad.
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer th:replace="~{General/fragmentos :: footer}"/>
+
+        <script>
+            function enviarContacto(event) {
+                event.preventDefault();
+                document.getElementById('mensajeExito').classList.remove('d-none');
+                return false;
+            }
+        </script>
+    </body>
+</html>

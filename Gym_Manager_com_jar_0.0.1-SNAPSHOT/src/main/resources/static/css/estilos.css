@@ -1,0 +1,65 @@
+:root {
+    --azul-marino: #0B1B3D;
+    --verde-jade: #007A5E;
+    --gris-claro: #F4F6F9;
+    --crema: #FAF9F6;
+}
+
+body {
+    background-color: var(--crema);
+}
+
+/* Navbar y Footer */
+.navbar-marino {
+    background-color: var(--azul-marino) !important;
+}
+
+.footer-marino {
+    background-color: var(--azul-marino) !important;
+}
+
+/* Hero principal */
+.hero-marino {
+    background-color: var(--azul-marino);
+    color: var(--crema);
+}
+
+/* Botones y acentos */
+.bg-jade {
+    background-color: var(--verde-jade) !important;
+}
+
+.text-jade {
+    color: var(--verde-jade) !important;
+}
+
+.btn-jade {
+    background-color: var(--verde-jade);
+    border-color: var(--verde-jade);
+    color: var(--crema);
+}
+
+.btn-jade:hover {
+    background-color: #00614a;
+    border-color: #00614a;
+    color: var(--crema);
+}
+
+/* Tarjetas y secciones secundarias */
+.bg-gris-claro {
+    background-color: var(--gris-claro);
+}
+
+.card-servicio {
+    background-color: var(--gris-claro);
+    border: none;
+    height: 100%;
+}
+
+.icon-jade {
+    color: var(--verde-jade);
+}
+
+.bg-crema {
+    background-color: var(--crema);
+}

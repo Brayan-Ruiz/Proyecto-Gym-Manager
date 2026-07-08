@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{General/fragmentos :: head}"/>
+    <body>
+        <header th:replace="~{General/fragmentos :: header}"/>
+
+        <main>
+            <section class="hero-marino py-5">
+                <div class="container py-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-7">
+                            <h2 class="fw-bold">Bienvenido, Administrador</h2>
+                            <p class="lead">
+                                Desde aquí puede gestionar los principales recursos del sistema: miembros, instructores e inventario. Próximamente se sumarán los módulos de pagos y rutinas de entrenamiento.
+                            </p>
+                            <a class="btn btn-outline-light" th:href="@{/logout}">
+                                <i class="fas fa-right-from-bracket"></i> Cerrar Sesión
+                            </a>
+                        </div>
+                        <div class="col-md-5 text-center">
+                            <img src="/img/GymManagerBanner.png" class="img-fluid rounded shadow" alt="Gym Manager Banner"/>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="container py-5">
+                <h4 class="text-center mb-5">Gestiones Disponibles</h4>
+
+                <div class="row g-4">
+                    <!-- Miembros -->
+                    <div class="col-md-4">
+                        <div class="card bg-gris-claro border-0 shadow-sm h-100 text-center p-4">
+                            <span class="badge bg-jade mb-3 mx-auto">Disponible</span>
+                            <i class="fas fa-users icon-jade fa-3x mb-3"></i>
+                            <h5 class="card-title">Miembros</h5>
+                            <p class="card-text text-muted small">Registro, edición y control de estado de los clientes del gimnasio.</p>
+                            <a class="btn btn-jade mt-auto" th:href="@{/miembro/listado}">
+                                <i class="fas fa-users"></i> Gestionar Miembros
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Instructores -->
+                    <div class="col-md-4">
+                        <div class="card bg-gris-claro border-0 shadow-sm h-100 text-center p-4">
+                            <span class="badge bg-jade mb-3 mx-auto">Disponible</span>
+                            <i class="fas fa-user-tie icon-jade fa-3x mb-3"></i>
+                            <h5 class="card-title">Instructores</h5>
+                            <p class="card-text text-muted small">Alta de instructores y creación de su cuenta de acceso al sistema.</p>
+                            <a class="btn btn-jade mt-auto" th:href="@{/instructor/listado}">
+                                <i class="fas fa-user-tie"></i> Gestionar Instructores
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Inventario -->
+                    <div class="col-md-4">
+                        <div class="card bg-gris-claro border-0 shadow-sm h-100 text-center p-4">
+                            <span class="badge bg-jade mb-3 mx-auto">Disponible</span>
+                            <i class="fas fa-boxes-stacked icon-jade fa-3x mb-3"></i>
+                            <h5 class="card-title">Inventario</h5>
+                            <p class="card-text text-muted small">Control de máquinas e indumentaria, filtrable por categoría.</p>
+                            <a class="btn btn-jade mt-auto" th:href="@{/inventario/listado}">
+                                <i class="fas fa-boxes-stacked"></i> Gestionar Inventario
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Pagos -->
+                    <div class="col-md-4">
+                        <div class="card bg-gris-claro border-0 shadow-sm h-100 text-center p-4">
+                            <span class="badge bg-jade mb-3 mx-auto">Disponible</span>
+                            <i class="fas fa-money-check-dollar icon-jade fa-3x mb-3"></i>
+                            <h5 class="card-title">Pagos</h5>
+                            <p class="card-text text-muted small">Registro de pagos mensuales y bloqueo automático por impago.</p>
+                            <a class="btn btn-jade mt-auto" th:href="@{/pago/historial}">
+                                <i class="fas fa-money-check-dollar"></i> Ir a Miembros
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer th:replace="~{General/fragmentos :: footer}"/>
+    </body>
+</html>

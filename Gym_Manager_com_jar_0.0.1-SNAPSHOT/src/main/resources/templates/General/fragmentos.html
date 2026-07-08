@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head">
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Gym Manager - Sistema de Gestión</title>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+        <link th:href="@{/css/estilos.css}" rel="stylesheet"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+    <header th:fragment="header">
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-marino">
+            <div class="container-fluid">
+                <a class="navbar-brand" th:href="@{/}">
+                    <i class="fas fa-dumbbell"></i> Gym Manager
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/#inicio}"><i class="fas fa-house"></i> Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/#servicios}"><i class="fas fa-list-check"></i> Servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/#horarios}"><i class="fas fa-clock"></i> Horarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/#contacto}"><i class="fas fa-envelope"></i> Contáctenos</a>
+                        </li>
+
+                        <!-- Sin Sesion -->
+                        <li class="nav-item ms-lg-3" th:if="${session.usuarioActivo == null}">
+                            <a class="btn btn-jade" th:href="@{/login}"><i class="fas fa-right-to-bracket"></i> Iniciar Sesión</a>
+                        </li>
+
+                        <!-- Sesion Activa -->
+                        <li class="nav-item dropdown ms-lg-3" th:if="${session.usuarioActivo != null}">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-circle-user fa-lg"></i>
+                                <span th:text="${session.usuarioActivo.correo}">usuario@correo.com</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li th:if="${session.rolActivo == 'ADMIN'}">
+                                    <a class="dropdown-item" th:href="@{/dashboard/admin}"><i class="fas fa-gauge"></i> Mi Panel</a>
+                                </li>
+                                <li th:if="${session.rolActivo == 'INSTRUCTOR'}">
+                                    <a class="dropdown-item" th:href="@{/dashboard/instructor}"><i class="fas fa-gauge"></i> Mi Panel</a>
+                                </li>
+                                <li th:if="${session.rolActivo == 'MIEMBRO'}">
+                                    <a class="dropdown-item" th:href="@{/dashboard/miembro}"><i class="fas fa-gauge"></i> Mi Panel</a>
+                                </li>
+                                <li><hr class="dropdown-divider"/></li>
+                                <li>
+                                    <a class="dropdown-item text-danger" th:href="@{/logout}"><i class="fas fa-right-from-bracket"></i> Cerrar Sesión</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <footer th:fragment="footer" class="footer-marino text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-1"><i class="fas fa-dumbbell"></i> Gym Manager</p>
+            <p class="mb-0 small">&copy; 2026 Gym Manager - San José, Costa Rica</p>
+        </div>
+    </footer>
+    </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{General/fragmentos :: head}"/>
+    <body>
+        <header th:replace="~{General/fragmentos :: header}"/>
+
+        <main>
+            <section class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-7">
+                        <div class="card card-servicio">
+                            <div class="card-header bg-jade text-white">
+                                <h4 class="mb-0">
+                                    <i class="fas fa-user-tie"></i>
+                                    <span th:text="${instructor.idInstructor == null} ? 'Nuevo Instructor' : 'Editar Instructor'">Instructor</span>
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/instructor/guardar}" th:object="${instructor}" method="post">
+                                    <input type="hidden" th:field="*{idInstructor}"/>
+                                    <input type="hidden" th:field="*{idUsuario}"/>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Nombre</label>
+                                        <input type="text" th:field="*{nombre}" class="form-control" required="true"/>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Primer Apellido</label>
+                                            <input type="text" th:field="*{primerApellido}" class="form-control" required="true"/>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Segundo Apellido</label>
+                                            <input type="text" th:field="*{segundoApellido}" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Cédula</label>
+                                            <input type="text" th:field="*{cedula}" class="form-control" required="true"/>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">N° de Contrato</label>
+                                            <input type="text" th:field="*{numeroContrato}" class="form-control" required="true"/>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Edad</label>
+                                        <input type="number" th:field="*{edad}" class="form-control"/>
+                                    </div>
+
+                                    <hr/>
+                                    <h6 class="text-jade"><i class="fas fa-key"></i> Datos de acceso al sistema</h6>
+                                    <div class="mb-3">
+                                        <label class="form-label">Correo</label>
+                                        <input type="email" th:field="*{correo}" class="form-control" required="true"/>
+                                    </div>
+                                    <div class="mb-3" th:if="${instructor.idInstructor == null}">
+                                        <label class="form-label">Contraseña inicial</label>
+                                        <input type="password" th:field="*{contrasena}" class="form-control" required="true"/>
+                                        <div class="form-text">El instructor podrá iniciar sesión con este correo y contraseña.</div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-jade"><i class="fas fa-floppy-disk"></i> Guardar</button>
+                                    <a class="btn btn-outline-secondary" th:href="@{/instructor/listado}">Cancelar</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer th:replace="~{General/fragmentos :: footer}"/>
+    </body>
+</html>

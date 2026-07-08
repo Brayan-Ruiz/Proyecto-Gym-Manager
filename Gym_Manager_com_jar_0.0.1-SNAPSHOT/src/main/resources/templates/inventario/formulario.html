@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{General/fragmentos :: head}"/>
+    <body>
+        <header th:replace="~{General/fragmentos :: header}"/>
+        <main>
+            <section class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-7">
+                        <div class="card card-servicio">
+                            <div class="card-header bg-jade text-white">
+                                <h4 class="mb-0">
+                                    <i class="fas fa-box"></i>
+                                    <span th:text="${articulo.idInventario == null} ? 'Nuevo Artículo' : 'Editar Artículo'">Artículo</span>
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/inventario/guardar}" th:object="${articulo}" method="post">
+                                    <input type="hidden" th:field="*{idInventario}"/>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Nombre del artículo</label>
+                                        <input type="text" th:field="*{nombreArticulo}" class="form-control" required="true"/>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Categoría</label>
+                                            <select th:field="*{categoria}" class="form-select" required="true">
+                                                <option value="MAQUINA">Máquina</option>
+                                                <option value="INDUMENTARIA">Indumentaria</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Cantidad</label>
+                                            <input type="number" th:field="*{cantidad}" class="form-control" required="true"/>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Estado de conservación</label>
+                                        <select th:field="*{estadoConservacion}" class="form-select">
+                                            <option value="NUEVO">Nuevo</option>
+                                            <option value="BUENO">Bueno</option>
+                                            <option value="REGULAR">Regular</option>
+                                            <option value="DANADO">Dañado</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Descripción</label>
+                                        <textarea th:field="*{descripcion}" class="form-control"></textarea>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-jade"><i class="fas fa-floppy-disk"></i> Guardar</button>
+                                    <a class="btn btn-outline-secondary" th:href="@{/inventario/listado}">Cancelar</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer th:replace="~{General/fragmentos :: footer}"/>
+    </body>
+</html>

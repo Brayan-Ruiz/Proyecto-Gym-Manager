@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{General/fragmentos :: head}"/>
+    <body>
+        <header th:replace="~{General/fragmentos :: header}"/>
+
+        <main>
+            <section class="container py-5">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2><i class="fas fa-users icon-jade"></i> Miembros</h2>
+                    <a class="btn btn-jade" th:href="@{/miembro/nuevo}"><i class="fas fa-user-plus"></i> Nuevo Miembro</a>
+                </div>
+
+                <div th:if="${todoOk}" class="alert alert-success" th:text="${todoOk}"></div>
+                <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+                <div class="card card-servicio">
+                    <div class="card-body">
+                        <p>Total de miembros: <strong th:text="${totalMiembros}">0</strong></p>
+                        <table class="table table-hover align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Nombre completo</th>
+                                    <th>Correo</th>
+                                    <th>Sexo</th>
+                                    <th>Peso (kg)</th>
+                                    <th>Estatura (m)</th>
+                                    <th>Estado</th>
+                                    <th class="text-end">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="miembro : ${miembros}">
+                                    <td th:text="${miembro.nombre + ' ' + miembro.primerApellido + ' ' + (miembro.segundoApellido ?: '')}"></td>
+                                    <td th:text="${miembro.correo}"></td>
+                                    <td th:text="${miembro.sexo}"></td>
+                                    <td th:text="${miembro.peso}"></td>
+                                    <td th:text="${miembro.estatura}"></td>
+                                    <td>
+                                        <span class="badge" th:classappend="${miembro.estado.name() == 'ACTIVO'} ? 'bg-jade' : 'bg-secondary'"
+                                              th:text="${miembro.estado}"></span>
+                                    </td>
+                                    <td class="text-end">
+                                        <a class="btn btn-sm btn-outline-secondary" th:href="@{/miembro/modificar/{id}(id=${miembro.idMiembro})}">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <form th:action="@{/miembro/cambiar-estado}" method="post" class="d-inline">
+                                            <input type="hidden" name="idMiembro" th:value="${miembro.idMiembro}"/>
+                                            <button type="submit" class="btn btn-sm btn-outline-danger" title="Activar/Desactivar">
+                                                <i class="fas fa-power-off"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer th:replace="~{General/fragmentos :: footer}"/>
+    </body>
+</html>

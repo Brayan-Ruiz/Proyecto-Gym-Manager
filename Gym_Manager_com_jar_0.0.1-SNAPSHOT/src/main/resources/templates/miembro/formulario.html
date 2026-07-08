@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{General/fragmentos :: head}"/>
+    <body>
+        <header th:replace="~{General/fragmentos :: header}"/>
+
+        <main>
+            <section class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-7">
+                        <div class="card card-servicio">
+                            <div class="card-header bg-jade text-white">
+                                <h4 class="mb-0">
+                                    <i class="fas fa-user-pen"></i>
+                                    <span th:text="${miembro.idMiembro == null} ? 'Nuevo Miembro' : 'Editar Miembro'">Miembro</span>
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/miembro/guardar}" th:object="${miembro}" method="post">
+                                    <input type="hidden" th:field="*{idMiembro}"/>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Nombre</label>
+                                        <input type="text" th:field="*{nombre}" class="form-control" required="true"/>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Primer Apellido</label>
+                                            <input type="text" th:field="*{primerApellido}" class="form-control" required="true"/>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Segundo Apellido</label>
+                                            <input type="text" th:field="*{segundoApellido}" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Correo</label>
+                                        <input type="email" th:field="*{correo}" class="form-control" required="true"/>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label">Sexo</label>
+                                            <select th:field="*{sexo}" class="form-select">
+                                                <option value="MASCULINO">Masculino</option>
+                                                <option value="FEMENINO">Femenino</option>
+                                                <option value="OTRO">Otro</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label">Peso (kg)</label>
+                                            <input type="number" step="0.01" th:field="*{peso}" class="form-control"/>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label">Estatura (m)</label>
+                                            <input type="number" step="0.01" th:field="*{estatura}" class="form-control"/>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-jade"><i class="fas fa-floppy-disk"></i> Guardar</button>
+                                    <a class="btn btn-outline-secondary" th:href="@{/miembro/listado}">Cancelar</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer th:replace="~{General/fragmentos :: footer}"/>
+    </body>
+</html>
