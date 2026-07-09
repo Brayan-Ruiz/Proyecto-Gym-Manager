@@ -4,17 +4,14 @@
     <head th:replace="~{General/fragmentos :: head}"/>
     <body>
         <header th:replace="~{General/fragmentos :: header}"/>
-
         <main>
             <section class="container py-5">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h2><i class="fas fa-users icon-jade"></i> Miembros</h2>
                     <a class="btn btn-jade" th:href="@{/miembro/nuevo}"><i class="fas fa-user-plus"></i> Nuevo Miembro</a>
                 </div>
-
                 <div th:if="${todoOk}" class="alert alert-success" th:text="${todoOk}"></div>
                 <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
-
                 <div class="card card-servicio">
                     <div class="card-body">
                         <p>Total de miembros: <strong th:text="${totalMiembros}">0</strong></p>
@@ -42,8 +39,11 @@
                                               th:text="${miembro.estado}"></span>
                                     </td>
                                     <td class="text-end">
-                                        <a class="btn btn-sm btn-outline-secondary" th:href="@{/miembro/modificar/{id}(id=${miembro.idMiembro})}">
+                                        <a class="btn btn-sm btn-outline-secondary" th:href="@{/miembro/modificar/{id}(id=${miembro.idMiembro})}" title="Editar">
                                             <i class="fas fa-pen"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-outline-secondary" th:href="@{/pago/historial/{id}(id=${miembro.idMiembro})}" title="Historial de pagos">
+                                            <i class="fas fa-money-check-dollar"></i>
                                         </a>
                                         <form th:action="@{/miembro/cambiar-estado}" method="post" class="d-inline">
                                             <input type="hidden" name="idMiembro" th:value="${miembro.idMiembro}"/>
@@ -59,7 +59,6 @@
                 </div>
             </section>
         </main>
-
         <footer th:replace="~{General/fragmentos :: footer}"/>
     </body>
 </html>

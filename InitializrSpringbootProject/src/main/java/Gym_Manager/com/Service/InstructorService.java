@@ -67,6 +67,11 @@ public class InstructorService {
         }
         instructorRepository.save(instructor);
     }
+    
+    @Transactional(readOnly = true)
+    public Optional<Instructor> getInstructorPorUsuario(Integer idUsuario) {
+        return instructorRepository.findByIdUsuario(idUsuario);
+    }
 
     @Transactional
     public void cambiarEstado(Integer idInstructor) {

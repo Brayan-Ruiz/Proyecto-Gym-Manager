@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{General/fragmentos :: head}"/>
+    <body>
+        <header th:replace="~{General/fragmentos :: header}"/>
+
+        <main>
+            <section class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-7">
+                        <div class="card bg-gris-claro border-0 shadow-sm">
+                            <div class="card-header bg-jade text-white">
+                                <h4 class="mb-0">
+                                    <i class="fas fa-dumbbell"></i>
+                                    <span th:text="${rutina.idRutina == null} ? 'Nueva Rutina' : 'Editar Rutina'">Rutina</span>
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/rutina/guardar}" th:object="${rutina}" method="post">
+                                    <input type="hidden" th:field="*{idRutina}"/>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Miembro asignado</label>
+                                        <select th:field="*{idMiembro}" class="form-select" required="true">
+                                            <option value="">Seleccione un miembro</option>
+                                            <option th:each="miembro : ${miembros}"
+                                                    th:value="${miembro.idMiembro}"
+                                                    th:text="${miembro.nombre + ' ' + miembro.primerApellido}">
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Nombre de la rutina</label>
+                                        <input type="text" th:field="*{nombre}" class="form-control" required="true"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Descripción</label>
+                                        <textarea th:field="*{descripcion}" class="form-control" rows="4"></textarea>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-jade"><i class="fas fa-floppy-disk"></i> Guardar</button>
+                                    <a class="btn btn-outline-secondary" th:href="@{/rutina/listado}">Cancelar</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer th:replace="~{General/fragmentos :: footer}"/>
+    </body>
+</html>

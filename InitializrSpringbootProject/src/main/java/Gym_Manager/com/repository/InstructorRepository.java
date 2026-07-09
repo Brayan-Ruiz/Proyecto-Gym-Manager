@@ -10,9 +10,11 @@ package Gym_Manager.com.repository;
  */
 
 import Gym_Manager.com.domain.Instructor;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InstructorRepository extends JpaRepository<Instructor, Integer> {
+    Optional<Instructor> findByIdUsuario(Integer idUsuario);
 }
