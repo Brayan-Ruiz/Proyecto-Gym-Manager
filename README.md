@@ -28,7 +28,7 @@ TECNOLOGIAS UTILIZADAS
   asignadas a miembros.
 - Miembro: consulta de sus rutinas y de su informacion personal.
 
-- VIDEO EXPLICATIVO DE LA APLICACION
+VIDEO EXPLICATIVO DE LA APLICACION
 -----------------------------------------------------------------
 https://youtu.be/v1ZRuCswLcc 
 
