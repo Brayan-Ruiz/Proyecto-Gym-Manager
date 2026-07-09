@@ -38,7 +38,6 @@ public class Rutina implements Serializable {
     private LocalDateTime fechaCreacion = LocalDateTime.now();
 
     @Column(name = "id_instructor", nullable = false)
-    @NotNull
     private Integer idInstructor;
 
     @Column(name = "id_miembro", nullable = false)
