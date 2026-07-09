@@ -34,10 +34,24 @@ https://youtu.be/v1ZRuCswLcc
 
 HISTORIAS DE USUARIO COMPLETAS
 -----------------------------------------------------------------
-HU-01 - Iniciar sesion - Prioridad: Alta
+HU-01 - Iniciar sesion
+
+HU-03 - Bloqueo automatico del miembro con pago automatico
  
-HU-04 - Restriccion de acceso por rol - Prioridad: Alta
+HU-04 - Restriccion de acceso por rol
  
-HU-05 - Registrar miembros - Prioridad: Alta
+HU-05 - Registrar miembros
+
+HU-06 - Registrar instructor
+
+HU-07 - Activar y desactivar instructor y miembro
+
+HU-08 - Inventario completo
+
+HU-09 - Registro de pago
+
+HU-10 - Crear y asignar rutinas a los miembros
+
+HU-14 - Filtro del inventario por categoria
  
 HU-06 - Registrar y gestionar instructores - Prioridad: Alta
