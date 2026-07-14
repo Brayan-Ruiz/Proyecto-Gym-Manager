@@ -104,7 +104,7 @@ public class InstructorController {
     }
 
     /**
-     * Solo el rol ADMIN puede gestionar instructores.
+     * ADMIN puede gestionar instructores.
      */
     private String validarAcceso(HttpSession session) {
         Object rolActivo = session.getAttribute("rolActivo");

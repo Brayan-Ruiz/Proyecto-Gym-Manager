@@ -55,7 +55,7 @@ public class InstructorService {
 
             instructor.setIdUsuario(usuario.getIdUsuario());
         } else {
-            // Edición: se sincroniza el correo y el estado de acceso
+            // Se sincroniza el correo y el estado de acceso
             // con la cuenta de usuario existente, sin tocar la contraseña.
             if (instructor.getIdUsuario() != null) {
                 usuarioRepository.findById(instructor.getIdUsuario()).ifPresent(usuario -> {

@@ -61,8 +61,7 @@ public class UsuarioService {
     }
 
     /**
-     * Envuelve el resultado de la validación de login, ya que ahora hay
-     * más de un motivo posible de rechazo (credenciales o pago vencido).
+     * Envuelve el resultado de la validación de login
      */
     public static class ResultadoLogin {
         private final Usuario usuario;

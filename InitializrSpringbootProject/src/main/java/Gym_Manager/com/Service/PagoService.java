@@ -37,9 +37,7 @@ public class PagoService {
     }
 
     /**
-     * HU-09: registra el pago del mes indicado. Si el pago queda marcado
-     * como PAGADO, reactiva automáticamente al miembro y su cuenta de
-     * acceso, en caso de que hubiesen sido bloqueados por HU-03.
+     * HU-09: Cuanto se marca el pago se activa la cuenta automaticamente
      */
     
     @Transactional
